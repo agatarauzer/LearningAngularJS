@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatibile" content="IE-edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Klasyfikacja skoczków narciarskich</title>
+
+		<!--latest compiled and minified Bootstrap CSS-->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+
+		<style>
+			.center-block {
+				float: none;
+			}
+		</style>
+
+
+	</head>
+	<body ng-app="jumperClasificationApp">
+
+		<div class="container" ng-controller="jumperTableController">
+			<div class="row">
+				<div class="col-sm-8 center-block">
+					<h1 class="text-center">Klasyfikacja {{ jumpers.length }} skoczków narciarskich</h1>
+					<br>
+
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="input-group">
+								<span class="input-group-addon">Szukaj: </span>
+								<input type="text" class="form-control" placeholder="Czego szukasz" ng-model="searcher">
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal">
+							  Dodaj skoczka
+							</button>
+
+							<!-- Modal -->
+							<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-body">
+							      	<div class="form-group">
+							      		<label>Nazwisko i imię skoczka:</label>
+							      		<input type="text" class="form-control" ng-model="jumperName">
+							      	</div>
+							      	<div class="form-group">	
+							      		<label>Narodowość skoczka:</label>
+							      		<input type="text" class="form-control" ng-model="jumperNationality">
+							      	</div>
+							        
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-secondary" data-dismiss="modal">Wróć</button>
+							        <button ng-click="addJumper()" type="button" class="btn btn-primary">Dodaj skoczka</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<br>
+
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th ng-repeat="heading in [
+									'Index' , 'Imię', 'Narodowość' , 'Miejsce w rankingu' , 'Punkty' , 'Usuń' 
+									]">
+									{{ heading }}
+									</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="jumper in jumpers | filter : searcher">
+									<td>{{ $index }} </td>
+									<td>{{ jumper.Name }} 
+										<button ng-click="editJumper  = !editJumper" class="btn btn-info btn-xs">Edytuj</button>
+										<input type="text" class="form-control" ng-if="editJumper" ng-model="jumper.Name">
+									</td>
+									<td>{{ jumper.Nation }} </td>
+									<td>{{ jumper.rank }} </td>
+									<td>{{ jumper.pts }} </td>
+									<td><button ng-click="deleteJumper( $index )" class="btn btn-danger btn-xs">&times;</button></td>
+								</tr>
+							</tbody>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+		<!-- ==================JavaScript=================== -->
+
+		<!-- AngularJS -->
+		<script src="js/angular.min.js"></script>
+		<script src="js/application.js"></script>
+		<!-- jQuery -->
+		<script src="js/jquery-3.3.1.min.js"></script>
+		<!--Latest compiled and minified Bootstrap JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
