@@ -1,0 +1,12 @@
+[ 
+	{ 
+		"name" : "pomarańcza", 
+		"country" : "Kolumbia",
+		"price" : 8
+	},
+	{ 
+		"name" : "jabłko", 
+		"country" : "Polska",
+		"price" : 3
+	}
+]
