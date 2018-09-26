@@ -1,12 +1,14 @@
 
 <div class="container">
- <div class="row">
-      <div class="col-sm-12">
-        <input type="text" class="form-control" placeholder="szukaj" ng-model="search">
-        <br>
-      </div>
+  <div class="row">
+    <div class="col-6 text-left">
+      <input type="text" class="form-control" placeholder="szukaj" ng-model="search">
+      <br>
+    </div>
+    <div class="col-6 text-right">
+      <a href="#!/product/create" role="button" class="btn btn-success">Dodaj produkt</a>
+    </div>
   </div>
-
     
   <div ng-controller="products">
     <div class="alert alert-info" ng-repeat="product in products | filter : search">
@@ -15,7 +17,9 @@
       kraj pochodzenia: {{ product.country }} 
       <br>
       cena: {{ product.price | number: 2 }} zł / kg
-      <a href="#!/product/{{$index}}" class="btn btn-default">Edytuj</a>
+      <br><br>
+      <a href="#!/product/edit/{{$index}}" role="button" class="btn btn-primary">Edytuj</a>
+      <button ng-click="deleteProduct( product , $index )" class="btn btn-danger float-right">Usuń</button>
     </div>
   </div>
 </div>

@@ -10,10 +10,17 @@ application.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvi
 		controller : 'products',
 		templateUrl : 'partials/products.html'
 	})
-	.when( '/product/:id' , {
-		controller : 'product',
-		templateUrl : 'partials/product.html'
+
+	.when( '/product/edit/:id' , {
+		controller : 'productEdit',
+		templateUrl : 'partials/product-edit.html'
 	})
+
+	.when( '/product/create' , {
+		controller : 'productCreate',
+		templateUrl : 'partials/product-create.html'
+	})
+
 	.otherwise({
 		redirectTo: '/home'
 	});
