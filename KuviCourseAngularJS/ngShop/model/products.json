@@ -8,5 +8,25 @@
 		"name" : "jabłko", 
 		"country" : "Polska",
 		"price" : 3
+	},
+	{
+		"name" : "winogrona",
+		"country" : "Hiszpania",
+		"price" : 10
+	},
+	{
+		"name" : "banany",
+		"country" : "Kolumbia",
+		"price" : 6
+	},
+	{
+		"name" : "cytryny",
+		"country" : "Hiszpania",
+		"price" : 8
+	},
+	{
+		"name" : "arbuz",
+		"country" : "Chorwacja",
+		"price" : 6
 	}
 ]

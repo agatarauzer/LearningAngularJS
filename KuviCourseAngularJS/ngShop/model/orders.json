@@ -1,0 +1,47 @@
+[
+	{
+		"userId" : 1,
+		"name" : "Ada",
+		"email" : "ggggww@mail.com",
+		"items" : 
+		[
+			{
+				"name" : "jabłko", 
+				"country" : "Polska",
+				"price" : 3,
+				"weight" : 5
+			},
+			{
+				"name" : "banany",
+				"country" : "Kolumbia",
+				"price" : 6,
+				"weight" : 3
+			}
+		],
+		"total": 33,
+		"status" : 0
+	},
+
+	{
+		"userId" : 1,
+		"name" : "Ada",
+		"email" : "ggggww@mail.com",
+		"items" : 
+		[
+			{
+				"name" : "cytryny",
+				"country" : "Hiszpania",
+				"price" : 8,
+				"weight" : 4
+			},
+			{
+				"name" : "winogrona",
+				"country" : "Hiszpania",
+				"price" : 10,
+				"weight" : 2
+			}
+		],
+		"total": 52,
+		"status" : 1
+	}
+]
