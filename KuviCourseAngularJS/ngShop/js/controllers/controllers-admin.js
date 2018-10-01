@@ -1,20 +1,9 @@
 'use strict';
 
-var appControllers = angular.module( 'appControllers' , [ 'ngRoute' ]);
+var controllersAdmin = angular.module( 'controllersAdmin' , []);
 
 
-appControllers.controller( 'appNavigation' , [ '$scope' , '$location' , function( $scope , $location ) {
-
-	console.log( $location.path());
-
-	$scope.isActive = function( path ) {
-		return $location.path() === path;
-	};
-
-}]);
-
-
-appControllers.controller( 'products' , [ '$scope' , '$http' , function( $scope , $http ) {
+controllersAdmin.controller( 'products' , [ '$scope' , '$http' , function( $scope , $http ) {
 
 	$http.get( 'model/products.json' ).then( successCallback, errorCallback);
 
@@ -35,7 +24,7 @@ appControllers.controller( 'products' , [ '$scope' , '$http' , function( $scope 
 }]);
 
 
-appControllers.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ) {
+controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ) {
 
 	$http.get( 'model/products.json' ).then( successCallback, errorCallback);
 
@@ -57,7 +46,7 @@ appControllers.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParams'
 
 }]);
 
-appControllers.controller( 'productCreate' , [ '$scope' , '$http' , function( $scope , $http ) {
+controllersAdmin.controller( 'productCreate' , [ '$scope' , '$http' , function( $scope , $http ) {
 
 	$scope.createProduct = function() {
 
@@ -68,7 +57,7 @@ appControllers.controller( 'productCreate' , [ '$scope' , '$http' , function( $s
 
 }]);
 
-appControllers.controller( 'users' , [ '$scope' , '$http' , function( $scope , $http ) {
+controllersAdmin.controller( 'users' , [ '$scope' , '$http' , function( $scope , $http ) {
 	
 	$http.get( 'model/users.json' ).then( successCallback, errorCallback);
 
@@ -87,7 +76,7 @@ appControllers.controller( 'users' , [ '$scope' , '$http' , function( $scope , $
 	};
 }]);
 
-appControllers.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ) {
+controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ) {
 
 	$http.get( 'model/users.json' ).then( successCallback, errorCallback);
 
@@ -109,7 +98,7 @@ appControllers.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' , 
 
 }]);
 
-appControllers.controller( 'userCreate' , [ '$scope' , '$http' , function( $scope , $http ) {
+controllersAdmin.controller( 'userCreate' , [ '$scope' , '$http' , function( $scope , $http ) {
 
 	$scope.createUser = function() {
 
@@ -120,7 +109,7 @@ appControllers.controller( 'userCreate' , [ '$scope' , '$http' , function( $scop
 
 }]);
 
-appControllers.controller( 'orders' , [ '$scope' , '$http' , function( $scope , $http ) {
+controllersAdmin.controller( 'orders' , [ '$scope' , '$http' , function( $scope , $http ) {
 	
 	$http.get( 'model/orders.json' ).then( successCallback, errorCallback);
 

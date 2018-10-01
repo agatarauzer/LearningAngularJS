@@ -1,0 +1,26 @@
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-6 text-left">
+      <br><br>
+      <input type="text" class="form-control" placeholder="szukaj" ng-model="search">
+      <br>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+    <div class="card bg-light mb-3" ng-repeat="product in products | filter : search">
+      <div class="card-body"> 
+        
+        <h4><span class="badge badge-warning float-right">cena: {{ product.price | number: 2 }} zł / kg </span></h4>
+        <h2><a class="text-capitalize float-left" style="color: black" href="#!/product/{{$index}}">{{ product.name }}</a></h2>
+        <br><br>
+        <a href="#!/product/{{$index}}" role="button" class="btn btn-outline-primary btn-sm">Szczegóły</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

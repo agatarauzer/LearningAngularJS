@@ -10,7 +10,7 @@
 
     <div class="col-6 text-right">
       <br><br>
-      <a href="#!/product/create" role="button" class="btn btn-outline-success">Dodaj produkt</a>
+      <a href="#!/admin/product/create" role="button" class="btn btn-outline-success">Dodaj produkt</a>
     </div>
   </div>
 
@@ -23,7 +23,7 @@
       <br>
       cena: {{ product.price | number: 2 }} zł / kg
       <br><br>
-      <a href="#!/product/edit/{{$index}}" role="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
+      <a href="#!/admin/product/edit/{{$index}}" role="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit"></i></a>
       <button ng-click="deleteProduct( product , $index )" class="btn btn-outline-danger btn-sm"><i class="fa fa-trash-alt"></i></button>
     </div>
   </div>

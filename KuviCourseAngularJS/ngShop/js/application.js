@@ -1,56 +1,70 @@
 'use strict';
 
-var application = angular.module( 'ngShop' , [ 'ngRoute' , 'appControllers' ] );
+var application = angular.module( 'ngShop' , [ 'ngRoute' , 'controllersAdmin' , 'controllersNavigation' , 'controllersSite' ] );
 
 
 application.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $httpProvider ) {
 
-	//====== products =====
+	//====== admin products =====
 
 	$routeProvider
-	.when( '/products' , {
+	.when( '/admin/products' , {
 		controller : 'products',
-		templateUrl : 'partials/products.html'
+		templateUrl : 'partials/admin/products.html'
 	})
 
-	.when( '/product/edit/:id' , {
+	.when( '/admin/product/edit/:id' , {
 		controller : 'productEdit',
-		templateUrl : 'partials/product-edit.html'
+		templateUrl : 'partials/admin/product-edit.html'
 	})
 
-	.when( '/product/create' , {
+	.when( '/admin/product/create' , {
 		controller : 'productCreate',
-		templateUrl : 'partials/product-create.html'
+		templateUrl : 'partials/admin/product-create.html'
 	})
 
-	//===== users =====
+	//===== admin users =====
 
-	.when( '/users' , {
+	.when( '/admin/users' , {
 		controller : 'users' ,
-		templateUrl : 'partials/users.html'
+		templateUrl : 'partials/admin/users.html'
 	})
 
-	.when( '/user/edit/:id' , {
+	.when( 'admin/user/edit/:id' , {
 		controller : 'userEdit',
-		templateUrl : 'partials/user-edit.html'
+		templateUrl : 'partials/admin/user-edit.html'
 	})
 
-	.when( '/user/create' , {
+	.when( '/admin/user/create' , {
 		controller : 'userCreate',
-		templateUrl : 'partials/user-create.html'
+		templateUrl : 'partials/admin/user-create.html'
 	})
 
-	//===== orders =====
+	//===== admin orders =====
 
-	.when( '/orders' , {
+	.when( '/admin/orders' , {
 		controller : 'orders' ,
-		templateUrl : 'partials/orders.html'
+		templateUrl : 'partials/admin/orders.html'
 	})
+
+	//====== site products =====
+
+	.when( '/products' , {
+		controller : 'siteProducts',
+		templateUrl : 'partials/site/products.html'
+	})
+
+	.when( '/product/:id' , {
+		controller : 'siteProduct',
+		templateUrl : 'partials/site/product.html'
+	})
+
+
 
 	//===== default =====
 
 	.otherwise({
-		redirectTo: '/home'
+		redirectTo: '/products'
 	});
 
 }]);
