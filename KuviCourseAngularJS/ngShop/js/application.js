@@ -1,6 +1,6 @@
 'use strict';
 
-var application = angular.module( 'ngShop' , [ 'ngRoute' , 'controllersAdmin' , 'controllersNavigation' , 'controllersSite' ] );
+var application = angular.module( 'ngShop' , [ 'ngRoute' , 'angular-storage' , 'controllersAdmin' , 'controllersNavigation' , 'controllersSite' , 'appServices' ] );
 
 
 application.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvider , $httpProvider ) {
@@ -30,7 +30,7 @@ application.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvi
 		templateUrl : 'partials/admin/users.html'
 	})
 
-	.when( 'admin/user/edit/:id' , {
+	.when( '/admin/user/edit/:id' , {
 		controller : 'userEdit',
 		templateUrl : 'partials/admin/user-edit.html'
 	})
@@ -59,7 +59,10 @@ application.config( [ '$routeProvider' , '$httpProvider' , function( $routeProvi
 		templateUrl : 'partials/site/product.html'
 	})
 
-
+	.when( '/cart' , {
+		controller : 'cartController',
+		templateUrl : 'partials/site/cart.html'
+	})
 
 	//===== default =====
 

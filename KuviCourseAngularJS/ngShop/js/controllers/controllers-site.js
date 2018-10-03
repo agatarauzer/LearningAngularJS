@@ -3,7 +3,7 @@
 var controllersSite = angular.module( 'controllersSite' , []);
 
 
-controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , function( $scope , $http ) {
+controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , 'cartService' , function( $scope , $http , cartService ) {
 
 	$http.get( 'model/products.json' ).then( successCallback, errorCallback);
 
@@ -15,16 +15,14 @@ controllersSite.controller( 'siteProducts' , [ '$scope' , '$http' , function( $s
 		console.log( 'Błąd pobrania pliku json' )
 	};
 
-	$scope.deleteProduct = function( product , $index ) {
-		//TODO: connect with API 
-
-		$scope.products.splice( $index , 1 );
+	$scope.addToCart = function( product ) {
+		cartService.add( product );
 	};
 
 }]);
 
 
-controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams' , function( $scope , $http , $routeParams ) {
+controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams' , 'cartService' , function( $scope , $http , $routeParams , cartService ) {
 
 	$http.get( 'model/products.json' ).then( successCallback, errorCallback);
 
@@ -35,6 +33,10 @@ controllersSite.controller( 'siteProduct' , [ '$scope' , '$http' , '$routeParams
 
 	function errorCallback(){
 		console.log( 'Błąd pobrania pliku json' )
+	};
+
+	$scope.addToCart = function( product ) {
+		cartService.add( product );
 	};
 
 }]);
@@ -51,6 +53,15 @@ controllersSite.controller( 'siteOrders' , [ '$scope' , '$http' , function( $sco
 	function errorCallback(){
 		console.log( 'Błąd pobrania pliku json' )
 	};
-
 	
+}]);
+
+controllersSite.controller( 'cartController' , [ '$scope' , '$http' , 'cartService' , function( $scope , $http , cartService ) {
+	
+	$scope.cart = cartService.show();
+
+	$scope.clearCart = function() {
+		cartService.clear();
+	};
+
 }]);

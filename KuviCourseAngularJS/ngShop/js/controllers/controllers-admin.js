@@ -30,11 +30,11 @@ controllersAdmin.controller( 'productEdit' , [ '$scope' , '$http' , '$routeParam
 
 	function successCallback( response ) {
 		var products = response.data;
-		$scope.product = products[$routeParams.id]
+		$scope.product = products[$routeParams.id];
 	};
 
 	function errorCallback(){
-		console.log( 'Błąd pobrania pliku json' )
+		console.log( 'Błąd pobrania pliku json' );
 	};
 
 	$scope.saveChanges = function( product ) {
@@ -66,7 +66,7 @@ controllersAdmin.controller( 'users' , [ '$scope' , '$http' , function( $scope ,
 	};
 
 	function errorCallback(){
-		console.log( 'Błąd pobrania pliku json' )
+		console.log( 'Błąd pobrania pliku json' );
 	};
 
 	$scope.deleteUser = function( user , $index ) {
@@ -82,14 +82,14 @@ controllersAdmin.controller( 'userEdit' , [ '$scope' , '$http' , '$routeParams' 
 
 	function successCallback( response ) {
 		var users = response.data;
-		$scope.user = users[$routeParams.id]
+		$scope.user = users[$routeParams.id];
 	};
 
 	function errorCallback(){
 		console.log( 'Błąd pobrania pliku json' )
 	};
 
-	$scope.saveChanges = function( user) {
+	$scope.saveChanges = function( user ) {
 		//TODO: connect with API 
 
 		console.log( user );
