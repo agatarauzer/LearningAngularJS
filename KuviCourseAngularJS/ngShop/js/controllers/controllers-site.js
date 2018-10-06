@@ -64,4 +64,23 @@ controllersSite.controller( 'cartController' , [ '$scope' , '$http' , 'cartServi
 		cartService.clear();
 	};
 
+	$scope.total = function() {
+		var total = 0;
+		angular.forEach( $scope.cart , function( item ) {
+			total += ( item.price * item.quantity ) ;
+		});
+		return total;
+	};
+
+	$scope.removeItem = function( $index ) {
+		$scope.cart.splice( $index , 1 );
+		cartService.removeItem( $scope.cart );
+
+	};
+
+	$scope.setOrder = function( $event ) {
+		console.log( 'zamowienie');
+		$event.preventDefault();
+	};
+
 }]);

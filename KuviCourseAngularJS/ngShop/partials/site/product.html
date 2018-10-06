@@ -8,13 +8,18 @@
           <br><br>
           <h2 class="text-capitalize">{{ product.name }}</h2>
           <p>Kraj pochodzenia: {{ product.country }}</p>
-          <h4><span class="badge badge-warning"> {{ product.price | number:2 }} zł </span></h4>
+          <h4><span class="badge badge-warning"> {{ product.price | number:2 }} zł/kg </span></h4>
           <br><br>
-          <a href="#!/products" role="button" class="btn btn-outline-secondary">Powrót</a>
-
-          <button ng-click="addToCart( product )" class="btn btn-outline-primary">Dodaj do koszyka</button>
-
-
+          <div class="form-row">
+            <div class="col-2">
+              <input type="number" step="0.1" class="form-control" ng-model="product.quantity" placeholder="Wpisz wagę w kg" min="0">
+            </div>
+            <div class="col">
+              <button ng-click="addToCart( product )" class="btn btn-outline-secondary">Dodaj do koszyka</button>
+            </div>
+          </div>
+          <br><br>
+          <a href="#!/products" role="button" class="btn btn-outline-primary">Powrót</a>
         </div>
       </div>
     </div>

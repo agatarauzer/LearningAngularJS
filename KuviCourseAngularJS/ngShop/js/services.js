@@ -19,10 +19,13 @@ appServices.factory( 'cartService' , [ 'store' , function( store ) {
 
 	cart.add = function( product ) {
 
-		if ( !cart.length ) {
+		if (product.quantity == null) {
 			product.quantity = 0;
+		};
+
+		if ( cart.length < 0 ) {
 			cart.push( product );
-		}
+		};
 
 		var addNew = true;
 
@@ -30,12 +33,11 @@ appServices.factory( 'cartService' , [ 'store' , function( store ) {
 
 			if (value.name == product.name) {
 				addNew = false;
-				cart[key].quantity++;
+				cart[key].quantity += product.quantity;
 			}
 		});
 
 		if ( addNew ) {
-			product.quantity = 1;
 			cart.push( product );
 		};
 
@@ -45,6 +47,10 @@ appServices.factory( 'cartService' , [ 'store' , function( store ) {
 	cart.clear = function() {
 		store.remove( 'cart' );
 		cart.length = 0;
+	};
+
+	cart.removeItem = function( newCart ) {
+		store.set( 'cart' , newCart );
 
 	};
 

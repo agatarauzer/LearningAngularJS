@@ -1,29 +1,56 @@
+<form ng-submit="setOrder( $event )" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12">
-			<h1>Koszyk</h1>
+			<br><br>
+			<div ng-if="!cart.length" class="alert alert-warning">Koszyk jest pusty!</div>
+			<div ng-if="cart.length">
+				<br>
+				<h3>Twój koszyk</h3>
+				<br><br>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Nazwa produktu</th>
+							<th>Cena za kg</th>
+							<th>Ilość</th>
+							<th>Razem</th>
+							<th>Usuń</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in cart">
+							<td>{{ item.name }}</td>
+							<td>{{ item.price | number:2 }} zł</td>
+							<td>{{ item.quantity }} kg</td>
+							<td><strong>{{ item.price * item.quantity | number:2 }} zł</strong></td>
+							<td><button class="btn btn-outline-danger btn-sm" ng-click="removeItem( $index )"><i class="fa fa-trash-alt"></i></button></td>
+						</tr>
+						<tr>
+							<td colspan="3" class="text-right">Do zapłaty: </td>
+							<td colspan="2" class="text-left"><strong>{{ total() | number:2 }} zł</strong></td>
+						</tr>
+					</tbody>	
+				</table>
 
-			<table class="table table-hover">
-				<thead>
-					<th>Nazwa produktu</th>
-					<th>Waga</th>
-					<th>Cena</th>
-				</thead>
-				<tbody>
-					
-					
-				</tbody>
 				
-			</table>
+					<input type="hidden" name="cmd" value="_cart">
+					<input type="hidden" name="business" value="seller@designerfotos.com">
 
+					<div ng-repeat="item in cart">
+						<input type="hidden" name="item_name" value="{{ item.name }}">
+						<input type="hidden" name="item_number" value="{{ $index + 1 }}">
+						<input type="hidden" name="item_quantity" value="{{ item.quantity }}">
+						<input type="hidden" name="item_price" value="{{ item.price }}">
+					</div>
+					  
+					  <button ng-click="clearCart()" class="btn btn-outline-danger">Wyczyść koszyk</button>	
+					 
+					  <button type="submit" class="btn btn-outline-primary float-right">Zamów i opłać</button>
 
-
-
-
-			{{ cart }}
-
-			<button ng-click="clearCart()" class="btn btn-outline-danger btn-sm">Wyczyść koszyk</button>
-			
+			</div>
 		</div>
 	</div>
 </div>
+</form>
